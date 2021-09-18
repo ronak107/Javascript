@@ -18,5 +18,5 @@ logger();
 
 function fruitprocessor(apples, orange) {
  console.log(apples ,orange);
- const juice = 
+ 
 }
