@@ -102,7 +102,8 @@ const restaurant = {
 // greet();
 
 //////////////////////
-const restaurant = {
+// distructuring object
+/*const restaurant = {
   name: 'classico italiano',
   location: 'surat',
   categories: ['otalian', 'pizza', 'pasta'],
@@ -165,3 +166,26 @@ const {
   sat: { open, close },
 } = openinghour;
 console.log(open, close);
+*/
+
+////////////////////////////
+//the spread operator
+/*
+const arr = [7, 8, 9];
+const badnewarr = [1, 2, arr[0], arr[1], arr[2]];
+console.log(badnewarr);
+
+const newarray = [1, 2, ...arr];
+console.log(newarray);
+*/
+
+///////////////////////
+//Rest pattern and parameters
+
+//SPREAD, because on RIGHT side of =
+const arr = [1, 2, ...[3, 4]];
+console.log(arr);
+
+// REST, beacause on LEFT side of =
+const [a, b, ...other] = [1, 2, 4, 5, 6, 7];
+console.log(a, b, other);
