@@ -181,7 +181,7 @@ console.log(newarray);
 
 ///////////////////////
 //Rest pattern and parameters
-
+/*
 //SPREAD, because on RIGHT side of =
 const arr = [1, 2, ...[3, 4]];
 console.log(arr);
@@ -189,3 +189,4 @@ console.log(arr);
 // REST, beacause on LEFT side of =
 const [a, b, ...other] = [1, 2, 4, 5, 6, 7];
 console.log(a, b, other);
+*/
