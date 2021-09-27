@@ -43,7 +43,7 @@ console.log(i, j, k);
 
 ////////////
 //distructuring objects
-const weekdays = ['mon', 'tue', 'wed', 'thu', 'fri', 'sat', 'sun'];
+/*const weekdays = ['mon', 'tue', 'wed', 'thu', 'fri', 'sat', 'sun'];
 const openingHours = {
   [weekdays[3]]: {
     open: 12,
@@ -90,3 +90,78 @@ const restaurant = {
     console.log(otherIngredients);
   },
 };
+*/
+// var name = 'Peter';
+// function greet() {
+//   var greeting = 'Hello';
+//   {
+//     let lang = 'English';
+//     console.log(`${lang} ${greeting} ${name}`);
+//   }
+// }
+// greet();
+
+//////////////////////
+const restaurant = {
+  name: 'classico italiano',
+  location: 'surat',
+  categories: ['otalian', 'pizza', 'pasta'],
+  startermenu: ['focaccia', 'bruschetta', 'garlicbread', 'Caprese salad'],
+  mainmenu: ['browni', 'fryfrency', 'pasta'],
+  openinghour: {
+    thu: {
+      open: 12,
+      close: 22,
+    },
+    fri: {
+      open: 11,
+      close: 23,
+    },
+    sat: {
+      open: 0,
+      close: 24,
+    },
+  },
+  order: function (starterindex, mainindex) {
+    return [this.startermenu[starterindex], this.mainmenu[mainindex]];
+  },
+  orderdelivery: function ({ starterindex, mainindex, time, add }) {
+    console.log(
+      `order recived! ${this.startermenu[starterindex]} and ${this.mainmenu[mainindex]} will be delivered to ${add} at ${time}`
+    );
+  },
+};
+restaurant.orderdelivery({
+  time: '22:30',
+  add: 'surat',
+  mainindex: 2,
+  starterindex: 2,
+});
+
+const { name, openinghour, categories } = restaurant;
+console.log(name, openinghour, categories);
+
+const {
+  name: restaurantName,
+  openinghour: hour,
+  categories: tags,
+} = restaurant;
+console.log(restaurantName, hour, tags);
+
+//default value
+const { menu = [], startermenu: starter = [] } = restaurant;
+console.log(menu, starter);
+
+// muating value
+let a = 111;
+let b = 123;
+const obj = { a: 23, b: 7, c: 14 };
+
+({ a, b } = obj);
+console.log(a, b);
+
+// nested obj
+const {
+  sat: { open, close },
+} = openinghour;
+console.log(open, close);
