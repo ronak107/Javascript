@@ -42,7 +42,7 @@ console.log(jonas);
 ////////////////////////
 //functions accepting callback function
 
-const oneWord = function (str) {
+/*const oneWord = function (str) {
   return str.replace(/ /g, '').toLowerCase();
 };
 
@@ -68,3 +68,13 @@ const high5 = function () {
 };
 document.body.addEventListener('click', high5);
 ['Jonas', 'Martha'].forEach(high5);
+*/
+
+const greet = function (greting) {
+  return function (name) {
+    console.log(`${greting} ${name}`);
+  };
+};
+const greeterhey = greet('hey');
+greeterhey('jonas');
+greet('hello')('jonas');
