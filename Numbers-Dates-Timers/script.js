@@ -72,7 +72,7 @@ setTimeout(
 console.log('waiting..........');
 
 // setinterval
-setInterval(function () {
-  const now = new Date();
-  console.log(now);
-}, 5);
+// setInterval(function () {
+//   const now = new Date();
+//   console.log(now);
+// }, 5);
