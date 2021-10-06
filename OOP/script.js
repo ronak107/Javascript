@@ -363,7 +363,7 @@ tesla.accelerate();
 //////////////////////
 //INHERITANCE BETWEEN CLASSES ES6 CLASSES
 
-class PersonCl {
+/*class PersonCl {
   constructor(fullName, birthYear) {
     this.fullName = fullName;
     this.birthYear = birthYear;
@@ -421,3 +421,4 @@ class StudentCl extends PersonCl {
 const martha = new StudentCl('Martha Jones', 2012, 'Computer Science');
 martha.introduce();
 martha.calcAge();
+*/
