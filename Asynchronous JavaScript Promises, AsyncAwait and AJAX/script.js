@@ -114,6 +114,7 @@ setTimeout(() => {
 // 2: 2s 2nd name and Age
 // 3: 2s gender
 
+/*
 const getrollno = () => {
   setTimeout(() => {
     console.log('api');
@@ -145,3 +146,181 @@ const getrollno = () => {
   }, 2000);
 };
 getrollno();
+*/
+
+/////////////////////////////
+//consuming promise
+
+// const request = fetch('https://restcountries.com/v2/name/portugal');
+// console.log(request);
+const btn = document.querySelector('.btn-country');
+const countriesContainer = document.querySelector('.countries');
+
+const renderCountry = function (data, className = '') {
+  const html = `
+  <article class="country ${className}">
+    <img class="country__img" src="${data.flag}" />
+    <div class="country__data">
+      <h3 class="country__name">${data.name}</h3>
+      <h4 class="country__region">${data.region}</h4>
+      <p class="country__row"><span>👫</span>${(
+        +data.population / 1000000
+      ).toFixed(1)} people</p>
+      <p class="country__row"><span>🗣️</span>${data.languages[0].name}</p>
+      <p class="country__row"><span>💰</span>${data.currencies[0].name}</p>
+    </div>
+  </article>
+  `;
+  countriesContainer.insertAdjacentHTML('beforeend', html);
+  countriesContainer.style.opacity = 1;
+};
+
+const renderError = function (msg) {
+  countriesContainer.insertAdjacentText('beforeend', msg);
+  countriesContainer.style.opacity = 1;
+};
+
+const getJSON = function (url, errorMsg = 'Something went wrong') {
+  return fetch(url).then(response => {
+    if (!response.ok) throw new Error(`${errorMsg} (${response.status})`);
+
+    return response.json();
+  });
+};
+
+////consuming promise
+// const getContrydata = function (country) {
+//   fetch(`https://restcountries.com/v2/name/${country}`)
+//     .then(function (response) {
+//       console.log(response);
+//       return response.json();
+//     })
+//     .then(function (data) {
+//       console.log(data);
+//       renderCountry(data[0]);
+//     });
+// };
+// getContrydata('portugal');
+
+///////////////////////////////////////////
+//CHAINING PROMISE
+/*const getContrydata = function (country) {
+  // country 1
+  fetch(`https://restcountries.com/v2/name/${country}`)
+    .then(response => response.json())
+    .then(data => {
+      renderCountry(data[0]);
+      const neighbour = data[0].borders[0];
+      if (!neighbour) return;
+
+      // country2
+
+      fetch(`https://restcountries.com/v2/capital/${neighbour}`);
+      // return 23;
+    })
+    .then(response => response.json())
+    .then(data => renderCountry(data, 'neighbour'));
+};
+getContrydata('Austria');
+*/
+
+///////////////////////
+//promise
+// function prom() {
+//   return new Promise(function (resolve, reject) {
+//     console.log('feching data,please wait');
+//     setTimeout(() => {
+//       $.get('https://jsonplaceholder.typicode.com/posts', function (data) {
+//         console.log(data);
+//       });
+//     }, 3000);
+//   });
+// }
+// prom()
+//   .then(result => {
+//     console.log(result);
+//   })
+//   .catch(error => {
+//     console.log(error);
+//   });
+
+///////////////////////////////////////////////////////////////////////////////////
+//// *fetch(file/url,{                                                           //
+////   methog : "POST",------------->"PUT","DELETE","GET"                        //
+////   body: data, ----------------->Form Data/ JSON Data/ Text                  //
+////   header:{                                                                  //
+////      'content-type' : 'application/json', -------------->json formate       //
+////      'content-type' : 'application/x-www-form-urlencoded'                   //
+////    })                                                                       //
+///////////////////////////////////////////////////////////////////////////////////
+
+//////////////////////////////////////
+// Fetch Api
+/*fetch('https://jsonplaceholder.typicode.com/users')
+  .then(response => response.json())
+  .then(data => {
+    console.log(data);
+
+    for (var r in data) {
+      const a = `${data[r].name}--${data[r].username}--${data[r].company.catchPhrase}`;
+      console.log(a);
+    }
+  })
+  .catch(error => console.log('can`t fetch data'));
+  */
+
+///////////////////////////////////////
+//Fetch api using insert method
+/*document.getElementById('btn').addEventListener('click', function (event) {
+  event.preventDefault(); //page not refresh
+  var obj = {
+    title: document.getElementById('email').value,
+    body: document.getElementById('pwd').value,
+    userId: 1,
+  };
+  fetch('https://jsonplaceholder.typicode.com/posts', {
+    method: 'POST',
+    body: JSON.stringify(obj),
+    headers: {
+      'Content-type': 'application/json; charset=UTF-8',
+    },
+  })
+    .then(response => response.json())
+    .then(json => console.log(json));
+});
+*/
+
+///////////////////////
+// fetch api using insert form
+/*document.getElementById('btn').addEventListener('click', function (event) {
+  event.preventDefault(); //page not refresh
+  // var obj = {
+  //   title: document.getElementById('email').value,
+  //   body: document.getElementById('pwd').value,
+  //   userId: 1,
+  // };
+  fetch('https://jsonplaceholder.typicode.com/posts', {
+    method: 'POST',
+    body: new FormData(document.getElementById('form')),
+    headers: {
+      'Content-type': 'application/x-www-form-urlencoded',
+    },
+  })
+    .then(response => response.json())
+    .then(json => console.log(json));
+});
+*/
+
+////////////////////////////////////
+//Asynce & await
+// async function test() {
+//   return 'Hello';
+// }
+// test().then(result => {
+//   console.log(result);
+// });
+
+let test = async () => 'Hellow';
+test().then(result => {
+  console.log(result);
+});
